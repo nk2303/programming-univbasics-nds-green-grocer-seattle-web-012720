@@ -23,7 +23,6 @@ def consolidate_cart(cart)
       new_item = cart[hash].clone
       new_item[:count] = 1
       con_cart.push(new_item)
-
     end
   end
   return con_cart
