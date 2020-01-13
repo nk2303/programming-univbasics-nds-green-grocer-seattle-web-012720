@@ -53,7 +53,7 @@ def apply_clearance(cart)
   # REMEMBER: This method **should** update cart
   cart.length.times do |hash|
     if cart[hash][:clearance]
-      cart[hash][:price] = (cart[hash][:price] - cart[hash][:price]*2/10)
+      cart[hash][:price] = (cart[hash][:price] - cart[hash][:price]*2/10)to_f
     end
   end
   return cart
