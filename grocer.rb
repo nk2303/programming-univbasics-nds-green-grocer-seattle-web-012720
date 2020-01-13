@@ -20,8 +20,10 @@ def consolidate_cart(cart)
       end
     end
     if(!has_found)
-      con_cart.push(cart[hash])
-      con_cart[hash][:count] = 1
+      new_item = cart[hash].clone
+      new_item[:count] = 1
+      con_cart.push(new_item)
+
     end
   end
   return con_cart
