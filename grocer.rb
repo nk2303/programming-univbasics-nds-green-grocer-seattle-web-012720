@@ -1,31 +1,43 @@
 def find_item_by_name_in_collection(name, collection)
-  # Implement me first!
-  #
-  # Consult README for inputs and outputs
+  collection.length.times do |item|
+    if collection[item][:item] == name
+      return collection[item]
+    end
+  end
+  return nil
 end
 
 def consolidate_cart(cart)
-  # Consult README for inputs and outputs
-  #
   # REMEMBER: This returns a new Array that represents the cart. Don't merely
-  # change `cart` (i.e. mutate) it. It's easier to return a new thing.
+  # change `cart` (i.e. mutate) it. It's easier to return a new thing. [{:i=>"name", :p=>2},{},{}]
+  con_cart = []
+  cart.length.times do |hash|
+    has_found = false
+    con_cart.length.times do |check|
+      if con_cart[check][:item] == cart[hash][:item]
+        con_cart[check][:count] += 1
+        has_found = true
+      end
+    end
+    if(!has_found)
+      con_cart.push(cart[hash])
+      con_cart[hash][:count] = 1
+    end
+  end
+  return con_cart
 end
 
 def apply_coupons(cart, coupons)
-  # Consult README for inputs and outputs
-  #
   # REMEMBER: This method **should** update cart
+  
+  
 end
 
 def apply_clearance(cart)
-  # Consult README for inputs and outputs
-  #
   # REMEMBER: This method **should** update cart
 end
 
 def checkout(cart, coupons)
-  # Consult README for inputs and outputs
-  #
   # This method should call
   # * consolidate_cart
   # * apply_coupons
