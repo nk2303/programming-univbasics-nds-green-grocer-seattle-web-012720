@@ -30,15 +30,17 @@ end
 def apply_coupons(cart, coupons)
   # REMEMBER: This method **should** update cart
   if coupons.length > 0
-    cart.length.times do |item|
-      if coupons[0][:item] == cart[item][:item]# && coupons[0][:num] >= cart[item][:count]
-        coupon_item = cart[item].clone
-        coupon_item[:item] += " W/COUPON"
-        coupon_item[:price] = coupons[0][:cost] / coupons[0][:num]
-        cart_count = cart[item][:count] % coupons[0][:num]
-        coupon_item[:count] = cart[item][:count] - cart_count
-        cart[item][:count] = cart_count
-        cart.push(coupon_item)
+    coupons.length.times do |c|
+      cart.length.times do |item|
+        if coupons[c][:item] == cart[item][:item]# && coupons[0][:num] >= cart[item][:count]
+          coupon_item = cart[item].clone
+          coupon_item[:item] += " W/COUPON"
+          coupon_item[:price] = coupons[c][:cost] / coupons[c][:num]
+          cart_count = cart[item][:count] % coupons[0][:num]
+          coupon_item[:count] = cart[item][:count] - cart_count
+          cart[item][:count] = cart_count
+          cart.push(coupon_item)
+        end
       end
     end
   end
