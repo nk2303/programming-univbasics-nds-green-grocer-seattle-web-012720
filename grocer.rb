@@ -29,7 +29,7 @@ end
 
 def apply_coupons(cart, coupons)
   # REMEMBER: This method **should** update cart
-  if coupons
+  if coupons.length > 0
     cart.length.times do |item|
       if coupons[0][:item] == cart[item][:item]# && coupons[0][:num] >= cart[item][:count]
         coupon_item = cart[item].clone
