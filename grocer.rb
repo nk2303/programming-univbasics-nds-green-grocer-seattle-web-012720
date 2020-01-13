@@ -72,5 +72,8 @@ def checkout(cart, coupons)
   new_cart.length.times do |cal|
     total +=new_cart[cal][:price] * new_cart[cal][:count]
   end
+  if total > 100
+    total = total - total/10
+  end
   return total
 end
